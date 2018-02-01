@@ -59,6 +59,16 @@
 
 <script>
 
+  function playSound(e) {
+    let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); //Seleciona o aúdio de acordo com o data-key
+    let key = document.querySelector(`div[data-key="${e.keyCode}"`); //Seleciona a div de acordo com o dataKey
+    if (!audio) return; //se não tiver audio sai da função
+    key.classList.add('playing'); // Adiciona a classe playing à div selecionada na 2ª linha, para dar efeitos ao botão.
+    audio.currentTime = 0; //reseta o time do audio, se for pressionado antes de terminar o som ele volta o som do começo.
+    audio.play();
+  }
+  window.addEventListener('keydown', playSound); //Adiciona um event listener aos botões do teclado, para acionar a function playSound.
+
 </script>
 
 
