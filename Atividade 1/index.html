@@ -67,8 +67,13 @@
     audio.currentTime = 0; //reseta o time do audio, se for pressionado antes de terminar o som ele volta o som do começo.
     audio.play();
   }
+  function removeTransition(e) { //Função responsável por remover o efeito da class 'playing'.
+      if (e.propertyName !== 'transform') return;
+      e.target.classList.remove('playing');
+    }
   window.addEventListener('keydown', playSound); //Adiciona um event listener aos botões do teclado, para acionar a function playSound.
-
+  const keys = Array.from(document.querySelectorAll('.key')); //Array das divs 'key'
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition)); //para cada div 'key' adiciona um EventListener para a função 'removeTransition'
 </script>
 
 
