@@ -54,13 +54,27 @@
       }
       return 0;
     }));
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+    var soma = 0;
+    for (let i = 0; i < inventors.length; i++)
+      soma += inventors[i].passed - inventors[i].year;
+    console.log(soma);
+
     // 5. Sort the inventors by years lived
+    
+    var lived = inventors.sort(function(a, b) {
+      var last = a.passed - a.year;
+      var next = b.passed - b.year;
+      return last > next ? -1 : 1;
+    });
+    console.table(lived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
 
 
     // 7. sort Exercise
